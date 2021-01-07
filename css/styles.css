@@ -40,9 +40,18 @@ img {
   height: auto;
 }
 /*header container*/
-.header .container {
+.page-header .container {
   display: flex;
   align-items: center;
+}
+.page-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  min-height: 80xp;
+  background-color: var(--primary-bg-color);
+  z-index: 1;
 }
 .main-nav {
   display: flex;
@@ -96,7 +105,7 @@ img {
   color: var(--accent-color);
 
   cursor: pointer;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25); */
 }
 
 /*site contacts*/
@@ -367,7 +376,7 @@ button {
 
 /*portfolio*/
 
-.header.border {
+.page-header.border {
   border-bottom: 1px solid var(--border-header);
 }
 
