@@ -9,8 +9,12 @@
   --accent-bg-color: #2f303a;
   --border-header: #ececec;
   --border-partners: #afb1b8;
+
   --icon-white: #ffffff;
   --icon-grey: #afb1b8;
+
+  --function-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --function-time: 250ms;
 }
 
 body {
@@ -101,6 +105,8 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition: var(--function-time) var(--function-cubic);
 }
 .site-nav .link:hover,
 .site-nav .link:focus {
@@ -109,17 +115,18 @@ img {
   cursor: pointer;
 }
 
-.site-nav .link.current::before {
+.site-nav .link.current:after {
   content: '';
   display: block;
   position: absolute;
+  left: 0;
+  bottom: 0;
 
   width: 100%;
   height: 4px;
   border-radius: 2px;
   background-color: var(--accent-color);
   color: var(--accent-color);
-  bottom: 0;
 }
 /*site contacts*/
 .contacts {
@@ -146,6 +153,8 @@ img {
 .link.tel {
   fill: var(--primary-text-color);
   align-items: center;
+
+  transition: var(--function-time) var(--function-cubic);
 }
 .icon-mail,
 .icon-tel {
@@ -236,6 +245,9 @@ button {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity var(--function-time) var(--function-cubic);
 }
 .backdrop.is-hidden {
   opacity: 0;
@@ -246,15 +258,20 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
 
-  /* min-height: 581px; */
-  min-height: 100px;
+  min-height: 581px;
   min-width: 528px;
 
-  padding: 20px;
+  padding: 8px;
   background-color: var(--primary-bg-color);
 }
+
+.backdrop.is-hidden .modal {
+  transform: tanslate(-50%, -50%) scale(0.9);
+  transition: transform var(--function-time) var(--function-cubic);
+}
+
 .close-button {
   top: 0;
   right: 0;
@@ -264,7 +281,13 @@ button {
   border-radius: 50%;
 
   border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
+.modal p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /*sections*/
 .link {
   text-decoration: none;
@@ -423,6 +446,8 @@ button {
 
 .team .link-social {
   fill: var(--icon-grey);
+
+  transition: var(--function-time) var(--function-cubic);
 }
 .team .link-social:hover,
 .team .link-social:focus {
@@ -446,6 +471,8 @@ button {
 
   border: 1px solid var(--border-partners);
   fill: var(--icon-grey);
+
+  transition: var(--function-time) var(--function-cubic);
 }
 
 .link-partners:hover,
@@ -480,6 +507,8 @@ button {
   text-decoration: none;
 
   cursor: pointer;
+
+  transition: var(--function-time) var(--function-cubic);
 }
 .filter-list .item {
   margin-right: 8px;
@@ -517,21 +546,13 @@ button {
   display: block;
   margin-top: 0px;
   margin-bottom: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
 }
 .card-set .thumb {
   position: relative;
+  overflow: hidden;
 }
 .card-set .thumb:hover::before {
-  display: inline-block;
-  position: absolute;
-  opacity: 0;
-
-  width: 100%;
-  height: 100%;
-  content: '';
-  background-color: rgb(33, 150, 243, 0.9);
+  opacity: 1;
 }
 
 .card-set .link:hover,
@@ -569,9 +590,16 @@ button {
   font-size: 16px;
   line-height: 1.86;
 }
-.modal-window {
+.card-overlay {
   position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateY(100%);
   opacity: 0;
+  transition: transform var(--function-time) var(--function-cubic),
+    opacity var(--function-time) var(--function-cubic);
 
   margin-top: 0;
   margin-bottom: 0;
@@ -583,24 +611,12 @@ button {
   font-size: 18px;
   line-height: 1.56;
 
-  color: #ffffff;
-}
-
-.card-set .link:hover .modal-window {
-  display: flex;
-  position: absolute;
-  opacity: 1;
-
-  height: 100%;
-  width: 100%;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 250ms opacity linear;
-
   background-color: rgba(33, 150, 243, 0.9);
   color: var(--secondary-text-color);
+}
+.card-set .link:hover .card-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 /*footer*/
 .footer {
@@ -684,6 +700,8 @@ button {
 
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--icon-white);
+
+  transition: var(--function-time) var(--function-cubic);
 }
 .link-social:hover,
 .link-social:focus {
