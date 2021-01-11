@@ -18,6 +18,7 @@
 }
 
 body {
+  margin: 0;
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
 
@@ -525,6 +526,8 @@ button {
 .filter:focus {
   color: var(--secondary-text-color);
   background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
   border: 1px solid transparent;
   cursor: pointer;
 }
@@ -556,7 +559,8 @@ button {
   position: relative;
   overflow: hidden;
 }
-.card-set .thumb:hover::before {
+.card-set .thumb:hover::before,
+.card-set .thumb:focus::before {
   opacity: 1;
 }
 
@@ -619,7 +623,8 @@ button {
   background-color: rgba(33, 150, 243, 0.9);
   color: var(--secondary-text-color);
 }
-.card-set .link:hover .card-overlay {
+.card-set .link:hover .card-overlay,
+.card-set .link:focus .card-overlay {
   opacity: 1;
   transform: translateY(0);
 }
@@ -681,6 +686,8 @@ button {
 .title-social {
   margin-top: 0;
   margin-bottom: 20;
+
+  text-transform: uppercase;
 }
 .social-list {
   display: flex;
